@@ -27,3 +27,12 @@ btn.addEventListener("click", async () => {
 	});
 	mediaRecorder.start();
 });
+
+let a = new Date();
+if (a.getHours() >= 20 || a.getHours() <= 7) {
+	document.querySelector("body").style.backgroundColor = "#050505";
+	document.querySelector("footer").style.color = "#f0f0f0";
+} else {
+	document.querySelector("body").style.backgroundColor = "#f0f0f0";
+	document.querySelector("footer").style.color = "#000000";
+}
