@@ -2,9 +2,10 @@ let btn = document.querySelector(".record-btn");
 btn.addEventListener("click", async () => {
 	let stream = await navigator.mediaDevices.getDisplayMedia({
 		video: true,
+		audio: true,
 	});
-	const mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9")
-		? "video/webm; codecs=vp9"
+	const mime = MediaRecorder.isTypeSupported("video/webm; codecs=h264")
+		? "video/webm; codecs=h264"
 		: "video/webm";
 	let mediaRecorder = new MediaRecorder(stream, {
 		mimeType: mime,
@@ -12,6 +13,7 @@ btn.addEventListener("click", async () => {
 	let chunks = [];
 	mediaRecorder.addEventListener("dataavailable", (e) => {
 		chunks.push(e.data);
+		console.log(e);
 	});
 	mediaRecorder.addEventListener("stop", () => {
 		let blob = new Blob(chunks, {
@@ -22,7 +24,7 @@ btn.addEventListener("click", async () => {
 		video.src = url;
 		let a = document.createElement("a");
 		a.href = url;
-		a.download = `${Date().slice(16, 24)}.webm`;
+		a.download = `${Date().slice(16, 24)}.mp4`;
 		a.click();
 	});
 	mediaRecorder.start();
