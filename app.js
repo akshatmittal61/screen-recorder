@@ -49,7 +49,7 @@ stopBtn.addEventListener("click", () => {
 saveBtn.addEventListener("click", () => {
 	let a = document.createElement("a");
 	a.href = document.querySelector("video").src;
-	a.download = `${Date().slice(16, 24)}.mp4`;
+	a.download = `screen-recording-${new Date().getTime()}.webm`;
 	video.style.display = "none";
 	recordBtn.classList.remove("dispn");
 	stopBtn.classList.add("dispn");
