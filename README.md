@@ -1,10 +1,12 @@
 # Screen Recorder
 
-![favicon](favicon.png)
+<p align='center'>
+<img src='./favicon.png' alt='favicon' />
+</p>
 
 ## Description
 
-This is a simple screen recorder made with native Media Recorder element in JavaScript.
+This is a simple screen recorder made with a native Media Recorder element in JavaScript.
 
 ## How to use
 
