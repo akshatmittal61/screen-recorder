@@ -1,5 +1,13 @@
+let isRecording = false;
+let mediaRecorder;
+
 let btn = document.querySelector(".record-btn");
 btn.addEventListener("click", async () => {
+	if (isRecording) {
+		mediaRecorder.stop();
+		btn.innerText = "Record Your Screen";
+		return;
+	}
 	let stream = await navigator.mediaDevices.getDisplayMedia({
 		video: true,
 		audio: true,
@@ -7,7 +15,7 @@ btn.addEventListener("click", async () => {
 	const mime = MediaRecorder.isTypeSupported("video/webm; codecs=h264")
 		? "video/webm; codecs=h264"
 		: "video/webm";
-	let mediaRecorder = new MediaRecorder(stream, {
+	mediaRecorder = new MediaRecorder(stream, {
 		mimeType: mime,
 	});
 	let chunks = [];
@@ -16,6 +24,8 @@ btn.addEventListener("click", async () => {
 		console.log(e);
 	});
 	mediaRecorder.addEventListener("stop", () => {
+		isRecording = false;
+		mediaRecorder.stream.getTracks().forEach((track) => track.stop());
 		let blob = new Blob(chunks, {
 			type: chunks[0].type,
 		});
@@ -28,6 +38,8 @@ btn.addEventListener("click", async () => {
 		a.click();
 	});
 	mediaRecorder.start();
+	isRecording = true;
+	btn.innerText = "Recording.., click to stop";
 });
 
 let a = new Date();
