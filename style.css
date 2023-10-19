@@ -44,6 +44,10 @@ button {
 	border-radius: 500px;
 	cursor: pointer;
 	transition: all 0.2s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
 }
 button:hover {
 	opacity: 0.9;

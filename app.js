@@ -5,7 +5,7 @@ let btn = document.querySelector(".record-btn");
 btn.addEventListener("click", async () => {
 	if (isRecording) {
 		mediaRecorder.stop();
-		btn.innerText = "Record Your Screen";
+		btn.innerHTML = `<i class="ri-record-circle-line"></i> Record Your Screen`;
 		return;
 	}
 	let stream = await navigator.mediaDevices.getDisplayMedia({
@@ -39,7 +39,7 @@ btn.addEventListener("click", async () => {
 	});
 	mediaRecorder.start();
 	isRecording = true;
-	btn.innerText = "Recording.., click to stop";
+	btn.innerHTML = `<i class="ri-stop-line"></i> Stop Recording`;
 });
 
 let a = new Date();
