@@ -1,13 +1,12 @@
 let isRecording = false;
 let mediaRecorder;
 
-let btn = document.querySelector(".record-btn");
-btn.addEventListener("click", async () => {
-	if (isRecording) {
-		mediaRecorder.stop();
-		btn.innerHTML = `<i class="ri-record-circle-line"></i> Record Your Screen`;
-		return;
-	}
+let recordBtn = document.querySelector(".record-btn");
+let stopBtn = document.querySelector(".stop-btn");
+let saveBtn = document.querySelector(".save-btn");
+let video = document.querySelector("video");
+
+recordBtn.addEventListener("click", async () => {
 	let stream = await navigator.mediaDevices.getDisplayMedia({
 		video: true,
 		audio: true,
@@ -21,7 +20,6 @@ btn.addEventListener("click", async () => {
 	let chunks = [];
 	mediaRecorder.addEventListener("dataavailable", (e) => {
 		chunks.push(e.data);
-		console.log(e);
 	});
 	mediaRecorder.addEventListener("stop", () => {
 		isRecording = false;
@@ -30,16 +28,33 @@ btn.addEventListener("click", async () => {
 			type: chunks[0].type,
 		});
 		let url = URL.createObjectURL(blob);
-		let video = document.querySelector("video");
 		video.src = url;
-		let a = document.createElement("a");
-		a.href = url;
-		a.download = `${Date().slice(16, 24)}.mp4`;
-		a.click();
+		video.controls = true;
+		video.autoplay = true;
+		video.style.display = "block";
 	});
 	mediaRecorder.start();
 	isRecording = true;
-	btn.innerHTML = `<i class="ri-stop-line"></i> Stop Recording`;
+	recordBtn.classList.add("dispn");
+	stopBtn.classList.remove("dispn");
+	saveBtn.classList.add("dispn");
+});
+
+stopBtn.addEventListener("click", () => {
+	mediaRecorder.stop();
+	stopBtn.classList.add("dispn");
+	saveBtn.classList.remove("dispn");
+});
+
+saveBtn.addEventListener("click", () => {
+	let a = document.createElement("a");
+	a.href = document.querySelector("video").src;
+	a.download = `${Date().slice(16, 24)}.mp4`;
+	video.style.display = "none";
+	recordBtn.classList.remove("dispn");
+	stopBtn.classList.add("dispn");
+	saveBtn.classList.add("dispn");
+	a.click();
 });
 
 let a = new Date();

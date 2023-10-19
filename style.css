@@ -53,5 +53,13 @@ button:hover {
 	opacity: 0.9;
 }
 video {
+	object-fit: contain;
+	width: auto;
+	max-width: 70%;
+	height: 40vh;
 	display: none;
+}
+
+.dispn {
+	display: none !important;
 }
