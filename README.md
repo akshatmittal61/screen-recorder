@@ -1,6 +1,6 @@
 # Screen Recorder
 
-![favicon]('./favicon.png')
+![favicon](favicon.png)
 
 ## Description
 
