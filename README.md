@@ -1,4 +1,4 @@
-# Screen Recorder
+# Kapture
 
 <p align='center'>
 <img src='./favicon.png' alt='favicon' />
@@ -8,7 +8,7 @@
 
 This is a simple screen recorder made with a native Media Recorder element in JavaScript.
 
-## How to use
+## Usage
 
 1. Clone this repository
 2. Open the `index.html` file in your browser

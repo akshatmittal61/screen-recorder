@@ -27,12 +27,17 @@ footer {
 	justify-content: center;
 	align-items: center;
 }
+
 header {
 	background-color: #4285f4;
 	color: #f0f0f0;
+}
+
+header h1 {
 	font-size: 5rem;
 	font-weight: 700;
 }
+
 button {
 	border: none;
 	outline: none;
