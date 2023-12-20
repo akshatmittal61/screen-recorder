@@ -59,9 +59,7 @@ saveBtn.addEventListener("click", () => {
 
 let a = new Date();
 if (a.getHours() >= 20 || a.getHours() <= 7) {
-	document.querySelector("body").style.backgroundColor = "#050505";
-	document.querySelector("footer").style.color = "#f0f0f0";
+	document.body.dataset.theme = "dark";
 } else {
-	document.querySelector("body").style.backgroundColor = "#f0f0f0";
-	document.querySelector("footer").style.color = "#000000";
+	document.body.dataset.theme = "light";
 }
